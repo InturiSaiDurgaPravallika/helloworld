@@ -1,0 +1,21 @@
+node {
+
+stage("git checkout"){
+git "https://github.com/InturiSaiDurgaPravallika/helloworld.git"
+}
+stage(" maven compile"){
+sh "mvn compile"
+}
+stage("maven test"){
+sh "mvn test"
+}
+stage(" maven package"){
+sh "mvn package"
+}
+stage("Building docker image"){
+sh "sudo docker build -t helloworld ."
+}
+stage("run docker container"){
+sh "docker run -d -p 8080:8080 --name hello helloworld "
+}
+
