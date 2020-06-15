@@ -16,6 +16,6 @@ stage("Building docker image"){
 sh "sudo docker build -t helloworld ."
 }
 stage("run docker container"){
-sh "docker run -d -p 8080:8080 --name hello helloworld "
+sh " sudo docker run -d -p 8080:8080 --name hello helloworld "
 }
 }
